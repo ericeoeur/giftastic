@@ -5,7 +5,7 @@ function displayPokemon() {
 
     let pokemon = $(this).attr("pokemon-name");
     //let queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag="+pokemon; //random photo
-    let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=" + pokemon;  //search query 
+    let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=" + pokemon;  //search query
 
 
     $.ajax({
@@ -14,32 +14,29 @@ function displayPokemon() {
     }) // After the data from the AJAX request comes back
         .done(function (response) {
             console.log(response);
+            $("#pokemon").html("");
 
             for (i = 0; i < 10; i++) {
-
-                $("#pokemon").prepend(
-                    "<p>Rated " + response.data[i].rating + "</p>"
-                );
-
                 let stillImageUrl = response.data[i].images.fixed_height_still.url;
                 let movingImageUrl = response.data[i].images.fixed_height.url;
                 let pokeImage = $("<img>");
-                //let arrange = $('<div class="row"><div class="col-sm-6 col-md-4"><div class="thumbnail">');
                 pokeImage.attr("src", stillImageUrl);
                 pokeImage.attr("alt", "nonMoving");
-                pokeImage.attr("id", "stillImage");
-                pokeImage.attr("class", "col-sm-4");
-               //$("#pokemon").prepend('<div class="row"><div class="col-sm-6 col-md-4"><div class="thumbnail">');
-                $("#pokemon").prepend(pokeImage);
-                //$("#pokemon").prepend('</div></div></div>');
 
+                let rating = $("<p>Rated " + response.data[i].rating + "</p>");
+                let col = $("<div>");
+                col.attr("class", "pokeImage");
+                col.append(rating);
 
-             
-                
+                let thumbnail = $("<div>");
+                thumbnail.attr("class", "thumbnail");
 
-                $("#stillImage").on("click", function () {
+                thumbnail.append(pokeImage);
+                col.append(thumbnail);
 
+                $("#pokemon").append(col);
 
+                pokeImage.on("click", function () {
                     let stillGif = (stillImageUrl);
                     let movingGif = (movingImageUrl);
 
@@ -91,4 +88,4 @@ $("#addPokemon").on("click", function (event) {
 });
 
 $(document).on("click", ".pokemon", displayPokemon);
-renderPokemon(); 
+renderPokemon();
