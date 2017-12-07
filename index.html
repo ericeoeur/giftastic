@@ -1,68 +1,56 @@
 <!DOCTYPE html>
-
 <html lang="en-us">
 
 <head>
 
     <meta charset="utf-8">
-    <title>Giftastic!</title>
+    <title>Giftastic Pokemon Edition!</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
         crossorigin="anonymous">
+
+    <style>
+        #pokemon {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
 
 </head>
 
 <body>
 
-    
-
     <form id="pokemonForm">
-            <div class="row">
-                    <div class="col-lg-6">
-                      <div class="input-group">
-                        <span class="input-group-btn">
-                          <button class="btn btn-primary" id="addPokemon" type="button">Go!</button>
-                        </span>
-                        <input type="text" class="form-control" id="pokemon-input" placeholder="Type your Pokemon here...">
-                      </div>
-                    </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="addPokemon" type="button">Go!</button>
+                    </span>
+                    <input type="text" class="form-control" id="pokemon-input" placeholder="Type your Pokemon here...">
+                </div>
             </div>
-        <br>  
+        </div>
+        <br>
     </form>
 
 
     <div id="pokemonButtons">
+    </div>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="panel panel-default">
+                    <div id="pokemon">
+                    </div>
                 </div>
-                <br>
-
-                <div class="container">
-                        
-                            <div class ="row">
-                        
-                                <div class="col-lg-9">
-                        
-                                    <div class = "panel panel-default">
-
-                                    
-                                                <div id="pokemon">
-
-                                                    
-
-                                                </div>
-
-                                    </div>
-                            </div>
-                </div>
-
-                </div>
-        
-
-
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="javascript.js"></script>
 
-
 </body>
-
-
 </html>
